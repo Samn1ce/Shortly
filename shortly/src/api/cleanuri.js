@@ -1,9 +1,10 @@
 import axios from "axios";
 
 export async function shortenLink(URI) {
-  const url = "https://cleanuri.com/api/v1/shorten";
+  const url = "/api";
   const header = {
     "Content-Type": "application/x-www-form-urlencoded",
+    "Access-Control-Allow-Origin": "*",
   };
   const body = {
     url: URI,

@@ -42,8 +42,8 @@ const toggleMenu = () => {
   <div class="w-full lg:h-screen lg:max-h-700 bg-zinc-200 relative">
     <main class="w-full max-w-7xl lg:h-full mx-auto relative z-10">
       <Stats />
-      <Boost />
     </main>
   </div>
+  <Boost />
   <Footer />
 </template>

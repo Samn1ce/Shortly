@@ -49,9 +49,7 @@ onMounted(() => {
     ref="section"
     class="mx-auto w-11/12 lg:h-full flex justify-center items-center py-5 md:pt-5 font-poppins text-txt"
   >
-    <div
-      class="w-11/12 pt-20 md:pt-10 flex flex-col gap-20 items-center bg-red-500"
-    >
+    <div class="w-11/12 pt-20 md:pt-10 flex flex-col gap-20 items-center">
       <div class="w-full md:w-96 grid gap-3 text-center">
         <h2 class="text-3xl md:text-4xl font-bold">Advanced Statistics</h2>
         <p class="text-zinc-400 text-semibold font-medium">
@@ -60,11 +58,11 @@ onMounted(() => {
         </p>
       </div>
       <!-- Marginal divs -->
-      <div class="w-full relative border border-black">
+      <div class="w-full relative border">
         <!-- BG lining -->
         <div
           ref="bgLining"
-          class="w-2 md:w-full h-full md:h-2 bg-[#2acfcf] absolute z-10 md:top-1/2 md:translate-y-1/2 right-1/2 translate-x-1/2 origin-left scale-x-0"
+          class="w-2 md:w-full h-full md:h-2 bg-[#2acfcf] absolute z-10 md:top-1/2 md:translate-y-1/2 left-1/2 -translate-x-1/2"
         ></div>
         <!-- Flexed divs -->
         <div
@@ -73,7 +71,7 @@ onMounted(() => {
         >
           <!-- First div -->
           <div
-            class="w-full md:w-2/6 lg:h-60 bg-gradient-to-b from-white to-zinc-200 rounded-md px-6 mt-10 md:mt-0"
+            class="w-full md:w-2/6 bg-gradient-to-b from-white to-zinc-200 rounded-md px-6 mt-10 md:mt-0"
           >
             <div
               class="bg-dark w-16 lg:w-20 -mt-10 md:ml-5 mb-5 mx-auto h-16 lg:h-20 rounded-full flex justify-center items-center"
@@ -93,7 +91,7 @@ onMounted(() => {
           </div>
           <!-- Second div -->
           <div
-            class="w-full md:w-2/6 lg:h-60 bg-gradient-to-b from-white to-zinc-200 rounded-md px-6 mt-10 md:mt-10"
+            class="w-full md:w-2/6 bg-gradient-to-b from-white to-zinc-200 rounded-md px-6 mt-10 md:mt-10"
           >
             <div
               class="bg-dark w-16 lg:w-20 -mt-10 md:ml-5 mx-auto mb-5 h-16 lg:h-20 rounded-full flex justify-center items-center"
@@ -111,7 +109,7 @@ onMounted(() => {
           </div>
           <!-- Third div -->
           <div
-            class="w-full md:w-2/6 lg:h-60 bg-gradient-to-b from-white to-zinc-200 rounded-md px-6 mt-10 md:mt-20"
+            class="w-full md:w-2/6 bg-gradient-to-b from-white to-zinc-200 rounded-md px-6 mt-10 md:mt-20"
           >
             <div
               class="bg-dark w-16 lg:w-20 -mt-10 md:ml-5 mx-auto mb-5 h-16 lg:h-20 rounded-full flex justify-center items-center"

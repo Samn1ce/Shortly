@@ -1,17 +1,15 @@
 import axios from "axios";
 
 export async function shortenLink(URI) {
-  const url = "/api";
-  const header = {
-    "Content-Type": "application/x-www-form-urlencoded",
-    "Access-Control-Allow-Origin": "*",
-  };
-  const body = {
-    url: URI,
-  };
+  const url = "/api/v1/shorten";
+  const header = { "Content-Type": "application/x-www-form-urlencoded" };
+  const body = new URLSearchParams({ url: URI });
 
   try {
-    const request = axios.post(url, header, body);
-    console.log(request.data);
-  } catch (error) {}
+    const response = await axios.post(url, body, { header });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return { error, message: "Internal Server error" };
+  }
 }

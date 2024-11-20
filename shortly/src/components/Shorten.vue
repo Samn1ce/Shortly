@@ -1,18 +1,24 @@
 <script setup>
+import { ref } from "vue";
 import Shorten from "../assets/icons/IconShorten.vue";
 import ShortenMobile from "../assets/icons/IconShortenMobile.vue";
 
 import { shortenLink } from "../api/cleanuri.js";
 
-const url = defineModel({
-  required: true,
-});
+const url = defineModel();
+
+const error = ref("");
 
 function submitLink() {
+  if (url.value == "" || url.value == undefined) {
+    error.value = "Please, add link";
+    return;
+  }
   try {
-    shortenLink(url);
+    shortenLink(url.value);
   } catch (error) {
-    throw new Error("Request failed. Please, try again.");
+    error.value = error.data.error;
+    throw new Error(error.data.error);
   }
 }
 </script>
@@ -26,15 +32,19 @@ function submitLink() {
     <div
       class="text-zinc-800 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-11/12 rounded-xl md:p-3 flex flex-col gap-2 md:flex-row md:gap-4 h-4/5 md:h-20"
     >
-      <div
-        class="w-full h-1/2 md:h-full rounded-md overflow-hidden md:px-8 px-3 py-3 bg-white"
-      >
-        <input
-          type="text"
-          v-model="url"
-          placeholder="Shorten a link here..."
-          class="w-full h-full text-md md:text-2xl outline-none"
-        />
+      <div class="w-full">
+        <div
+          class="w-full h-1/2 md:h-full rounded-md overflow-hidden md:px-8 px-3 py-3 bg-white"
+          :class="{ 'border border-red-500': error != '' }"
+        >
+          <input
+            type="text"
+            v-model="url"
+            placeholder="Shorten a link here..."
+            class="w-full h-full text-md md:text-2xl outline-none"
+          />
+        </div>
+        <p class="text-red-500 italic">{{ error }}</p>
       </div>
       <button
         @click="submitLink"

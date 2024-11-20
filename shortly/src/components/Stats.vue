@@ -1,74 +1,128 @@
 <script setup>
+import { onMounted, ref } from "vue";
+import { gsap } from "gsap";
 import Brand from "../assets/icons/IconBrand.vue";
 import Customizable from "../assets/icons/IconCustomizable.vue";
 import Detailed from "../assets/icons/IconDetailed.vue";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
+const statsContainer = ref(null); // Ref for the container of the 3 flexed divs
+const bgLining = ref(null); // Ref for the blue background line
+const section = ref(null); // Ref for the entire section
+
+onMounted(() => {
+  const timeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: section.value, // The section to watch
+      start: "top center", // When the top of the section hits the center of the viewport
+      once: true, // Only trigger the animation once
+    },
+  });
+
+  // Stagger animation for the 3 flexed divs
+  timeline.from(statsContainer.value.children, {
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    stagger: 0.2,
+    ease: "power2.out",
+  });
+
+  // Animation for the blue background lining
+  timeline.fromTo(
+    bgLining.value,
+    { scaleX: 0 }, // Start with the line not visible
+    {
+      scaleX: 1, // Fully visible
+      duration: 1,
+      transformOrigin: "left center", // Expand from left to right
+      ease: "power2.out",
+    }
+  );
+});
 </script>
 
 <template>
-  <section class="mx-auto w-11/12 h-full flex justify-center items-center pt-5">
-    <div class="w-11/12 h-4/5 pt-10 flex flex-col gap-20 items-center">
-      <div class="w-96 grid gap-3 text-center">
-        <h2 class="text-4xl font-bold">Advanced Statistics</h2>
-        <p class="text-zinc-400 text-semibold font-semibold">
+  <section
+    ref="section"
+    class="mx-auto w-11/12 lg:h-full flex justify-center items-center py-5 md:pt-5 font-poppins text-txt"
+  >
+    <div
+      class="w-11/12 pt-20 md:pt-10 flex flex-col gap-20 items-center bg-red-500"
+    >
+      <div class="w-full md:w-96 grid gap-3 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold">Advanced Statistics</h2>
+        <p class="text-zinc-400 text-semibold font-medium">
           Track how your links are performing across the web with our advanced
           statistics dashboard.
         </p>
       </div>
-      <!-- MArginal divs -->
-      <div class="w-full h-60 relative">
+      <!-- Marginal divs -->
+      <div class="w-full relative border border-black">
         <!-- BG lining -->
         <div
-          class="w-full h-2 bg-[#2acfcf] absolute z-10 top-1/2 translate-y-1/2"
+          ref="bgLining"
+          class="w-2 md:w-full h-full md:h-2 bg-[#2acfcf] absolute z-10 md:top-1/2 md:translate-y-1/2 right-1/2 translate-x-1/2 origin-left scale-x-0"
         ></div>
-        <!-- !st div -->
-        <div class="relative flex gap-4 z-20">
+        <!-- Flexed divs -->
+        <div
+          ref="statsContainer"
+          class="relative flex flex-wrap md:flex-nowrap gap-8 md:gap-4 z-20"
+        >
+          <!-- First div -->
           <div
-            class="w-2/6 h-60 bg-gradient-to-b from-white to-zinc-200 rounded-md px-6"
+            class="w-full md:w-2/6 lg:h-60 bg-gradient-to-b from-white to-zinc-200 rounded-md px-6 mt-10 md:mt-0"
           >
             <div
-              class="bg-dark w-20 -mt-10 ml-5 mb-5 h-20 rounded-full flex justify-center items-center"
+              class="bg-dark w-16 lg:w-20 -mt-10 md:ml-5 mb-5 mx-auto h-16 lg:h-20 rounded-full flex justify-center items-center"
             >
               <Brand />
             </div>
-            <div class="flex flex-col gap-6">
-              <h1 class="text-2xl font-bold">Brand Recognition</h1>
-              <p class="font-semibold text-zinc-400">
+            <div class="flex flex-col gap-4 md:gap-2 lg:gap-6">
+              <h1 class="md:text-md lg:text-2xl font-bold">
+                Brand Recognition
+              </h1>
+              <p class="text-zinc-400 md:text-sm lg:text-base font-medium">
                 Boost your brand recognition with each click. Generic links
                 don’t mean a thing. Branded links help instil confidence in your
                 content.
               </p>
             </div>
           </div>
-          <!-- 2nd div -->
+          <!-- Second div -->
           <div
-            class="w-2/6 h-60 bg-gradient-to-b from-white to-zinc-200 rounded-md px-6 mt-10"
+            class="w-full md:w-2/6 lg:h-60 bg-gradient-to-b from-white to-zinc-200 rounded-md px-6 mt-10 md:mt-10"
           >
             <div
-              class="bg-dark w-20 -mt-10 ml-5 mb-5 h-20 rounded-full flex justify-center items-center"
+              class="bg-dark w-16 lg:w-20 -mt-10 md:ml-5 mx-auto mb-5 h-16 lg:h-20 rounded-full flex justify-center items-center"
             >
               <Detailed />
             </div>
-            <div class="flex flex-col gap-6">
-              <h1 class="text-2xl font-bold">Detailed Records</h1>
-              <p class="font-semibold text-zinc-400">
+            <div class="flex flex-col gap-4 md:gap-2 lg:gap-6">
+              <h1 class="md:text-md lg:text-2xl font-bold">Detailed Records</h1>
+              <p class="font-medium text-zinc-400 md:text-sm lg:text-base">
                 Gain insights into who is clicking your links. Knowing when and
                 where people engage with your content helps inform better
                 decisions.
               </p>
             </div>
           </div>
-          <!-- 3rd div -->
+          <!-- Third div -->
           <div
-            class="w-2/6 h-60 bg-gradient-to-b from-white to-zinc-200 rounded-md px-6 mt-20"
+            class="w-full md:w-2/6 lg:h-60 bg-gradient-to-b from-white to-zinc-200 rounded-md px-6 mt-10 md:mt-20"
           >
             <div
-              class="bg-dark w-20 -mt-10 ml-5 mb-5 h-20 rounded-full flex justify-center items-center"
+              class="bg-dark w-16 lg:w-20 -mt-10 md:ml-5 mx-auto mb-5 h-16 lg:h-20 rounded-full flex justify-center items-center"
             >
               <Customizable />
             </div>
-            <div class="flex flex-col gap-6">
-              <h1 class="text-2xl font-bold">Fully Customizable</h1>
-              <p class="font-semibold text-zinc-400">
+            <div class="flex flex-col gap-4 md:gap-2 lg:gap-6">
+              <h1 class="md:text-md lg:text-2xl font-bold">
+                Fully Customizable
+              </h1>
+              <p class="font-medium text-zinc-400 md:text-sm lg:text-base">
                 Improve brand awareness and content discoverability through
                 customizable links, supercharging audience engagement.
               </p>

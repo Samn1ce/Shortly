@@ -4,14 +4,18 @@ import X from "../assets/icons/IconTwitter.vue";
 
 <template>
   <footer
-    class="w-full h-[40vh] max-h-[500px] bg-[#232127] flex justify-center items-center"
+    class="w-full md:h-[40vh] md:max-h-[500px] bg-[#232127] flex justify-center items-center font-poppins"
   >
-    <div class="text-white w-4/5 mx-auto flex justify-between">
-      <h1 class="text-4xl font-bold">Shortly</h1>
-      <div class="flex gap-20">
+    <div
+      class="max-w-7xl text-white w-4/5 mx-auto flex md:flex-row flex-col md:justify-between justify-center items-center md:items-start gap-10 md:gap-0 text-center md:text-left py-5"
+    >
+      <h1 class="text-4xl md:text-2xl lg:text-4xl font-bold">Shortly</h1>
+      <div class="flex flex-col md:flex-row md:gap-20 gap-10">
         <div class="flex flex-col gap-4">
           <h2 class="font-bold">Features</h2>
-          <div class="flex flex-col gap-1 text-zinc-400 font-semivold">
+          <div
+            class="flex flex-col gap-1 text-zinc-400 font-semibold text-sm lg:text-base"
+          >
             <div>Link Shortening</div>
             <div>Branded Links</div>
             <div>Analytics</div>
@@ -20,7 +24,9 @@ import X from "../assets/icons/IconTwitter.vue";
         <!--  -->
         <div class="flex flex-col gap-4">
           <h2 class="font-bold">Resources</h2>
-          <div class="flex flex-col gap-1 text-zinc-400 font-semivold">
+          <div
+            class="flex flex-col gap-1 text-zinc-400 font-semibold text-sm lg:text-base"
+          >
             <div>Blog</div>
             <div>Developers</div>
             <div>Support</div>
@@ -29,7 +35,9 @@ import X from "../assets/icons/IconTwitter.vue";
         <!--  -->
         <div class="flex flex-col gap-4">
           <h2 class="font-bold">Company</h2>
-          <div class="flex flex-col gap-1 text-zinc-400 font-semivold">
+          <div
+            class="flex flex-col gap-1 text-zinc-400 font-semibold text-sm lg:text-base"
+          >
             <div>About</div>
             <div>Our Team</div>
             <div>Career</div>

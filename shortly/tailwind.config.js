@@ -9,6 +9,12 @@ export default {
       backgroundColor: {
         dark: "#3b3054",
       },
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+      },
+      colors: {
+        txt: "#232127",
+      },
     },
   },
   plugins: [],

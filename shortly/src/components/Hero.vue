@@ -27,7 +27,9 @@ import BG from "../assets/icons/Iconillustration-working.vue";
           Get Started
         </button>
       </div>
-      <div class="max-h-1/2 max-h md:w-1/2 md:h-full order-first md:order-last">
+      <div
+        class="max-h-[395px] max-h md:w-1/2 md:h-full order-first md:order-last"
+      >
         <BG class="scale-75 md:scale-100 -mr-40 -mt-7 md:mt-0" />
       </div>
     </div>

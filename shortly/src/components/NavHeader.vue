@@ -20,7 +20,7 @@ const handleToggle = () => {
 
 <template>
   <div
-    class="mx-auto w-4/5 h-[70px] flex justify-between items-center font-poppins text-txt"
+    class="mx-auto w-4/5 h-[70px] flex justify-between items-center font-poppins text-txt z-10 relative"
   >
     <div class="flex justify-center items-center gap-8">
       <h1 class="text-4xl font-bold">Shortly</h1>

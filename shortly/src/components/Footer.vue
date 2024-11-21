@@ -4,7 +4,7 @@ import X from "../assets/icons/IconTwitter.vue";
 
 <template>
   <footer
-    class="w-full md:h-[40vh] md:max-h-[500px] bg-[#232127] flex justify-center items-center font-poppins"
+    class="w-full py-5 md:max-h-[500px] bg-[#232127] flex justify-center items-center font-poppins"
   >
     <div
       class="max-w-7xl text-white w-4/5 mx-auto flex md:flex-row flex-col md:justify-between justify-center items-center md:items-start gap-10 md:gap-0 text-center md:text-left py-5"

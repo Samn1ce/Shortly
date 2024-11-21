@@ -15,7 +15,7 @@ const toggleMenu = () => {
 </script>
 
 <template>
-  <header class="w-full md:h-screen md:max-h-700 bg-zinc-50 overflow-hidden">
+  <header class="w-full md:max-h-700 bg-zinc-50 overflow-hidden">
     <nav
       v-if="isMenuOpen"
       class="absolute top-20 w-11/12 left-1/2 transform -translate-x-1/2 bg-[#3b3054] z-20 flex flex-col items-center justify-center md:hidden font-poppins font-semibold text-2xl gap-8 px-3 py-5 text-zinc-100 rounded-lg"
@@ -37,10 +37,10 @@ const toggleMenu = () => {
       <NavHeader :isMenuOpen="isMenuOpen" @toggle-menu="toggleMenu" />
       <Hero />
     </div>
-    <Shorten />
   </header>
-  <div class="w-full lg:h-screen lg:max-h-700 bg-zinc-200 relative">
+  <div class="w-full lg:max-h-700 bg-zinc-200 relative">
     <main class="w-full max-w-7xl lg:h-full mx-auto relative z-10">
+      <Shorten />
       <Stats />
     </main>
   </div>

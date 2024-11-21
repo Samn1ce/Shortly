@@ -47,9 +47,9 @@ onMounted(() => {
 <template>
   <section
     ref="section"
-    class="mx-auto w-11/12 lg:h-full flex justify-center items-center py-5 md:pt-5 font-poppins text-txt"
+    class="mx-auto w-11/12 flex justify-center items-center py-20 md:pt-5 font-poppins text-txt"
   >
-    <div class="w-11/12 pt-20 md:pt-10 flex flex-col gap-20 items-center">
+    <div class="w-11/12 pt-20 md:pt- flex flex-col gap-20 items-center">
       <div class="w-full md:w-96 grid gap-3 text-center">
         <h2 class="text-3xl md:text-4xl font-bold">Advanced Statistics</h2>
         <p class="text-zinc-400 text-semibold font-medium">
@@ -71,7 +71,7 @@ onMounted(() => {
         >
           <!-- First div -->
           <div
-            class="w-full md:w-2/6 bg-gradient-to-b from-white to-zinc-200 rounded-md px-6 mt-10 md:mt-0"
+            class="w-full md:w-2/6 bg-gradient-to-b from-white to-zinc-200 rounded-md px-6 mt-10 md:mt-0 pb-3"
           >
             <div
               class="bg-dark w-16 lg:w-20 -mt-10 md:ml-5 mb-5 mx-auto h-16 lg:h-20 rounded-full flex justify-center items-center"
@@ -91,7 +91,7 @@ onMounted(() => {
           </div>
           <!-- Second div -->
           <div
-            class="w-full md:w-2/6 bg-gradient-to-b from-white to-zinc-200 rounded-md px-6 mt-10 md:mt-10"
+            class="w-full md:w-2/6 bg-gradient-to-b from-white to-zinc-200 rounded-md px-6 mt-10 md:mt-10 pb-3"
           >
             <div
               class="bg-dark w-16 lg:w-20 -mt-10 md:ml-5 mx-auto mb-5 h-16 lg:h-20 rounded-full flex justify-center items-center"
@@ -109,7 +109,7 @@ onMounted(() => {
           </div>
           <!-- Third div -->
           <div
-            class="w-full md:w-2/6 bg-gradient-to-b from-white to-zinc-200 rounded-md px-6 mt-10 md:mt-20"
+            class="w-full md:w-2/6 bg-gradient-to-b from-white to-zinc-200 rounded-md px-6 mt-10 md:mt-20 pb-3"
           >
             <div
               class="bg-dark w-16 lg:w-20 -mt-10 md:ml-5 mx-auto mb-5 h-16 lg:h-20 rounded-full flex justify-center items-center"

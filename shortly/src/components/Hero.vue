@@ -4,7 +4,7 @@ import BG from "../assets/icons/Iconillustration-working.vue";
 
 <template>
   <div
-    class="mx-auto w-full lg:h-[90%] flex md:justify-end font-poppins text-txt"
+    class="mx-auto w-full lg:h-screen max-h-700 flex md: md:justify-end md:items-center font-poppins text-txt"
   >
     <div
       class="w-full md:w-11/12 md:h-full flex flex-col md:flex-row justify-center items-center lg:justify-start lg:items-start"
@@ -27,8 +27,8 @@ import BG from "../assets/icons/Iconillustration-working.vue";
           Get Started
         </button>
       </div>
-      <div class="max-h-[400px] md:w-1/2 md:h-full order-first md:order-last">
-        <BG class="scale-75 md:scale-100 -mr-40 -mt-14 md:mt-0" />
+      <div class="max-h-1/2 max-h md:w-1/2 md:h-full order-first md:order-last">
+        <BG class="scale-75 md:scale-100 -mr-40 -mt-7 md:mt-0" />
       </div>
     </div>
   </div>

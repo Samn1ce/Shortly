@@ -42,6 +42,27 @@ onMounted(() => {
     }
   );
 });
+
+const isCopied = ref(false);
+
+const textToCopy = ref(null);
+
+const copyToClipboard = () => {
+  if (textToCopy.value) {
+    const text = textToCopy.value.innerText;
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        isCopied.value = true;
+        setTimeout(() => {
+          isCopied.value = false;
+        }, 2000);
+      })
+      .catch((err) => {
+        console.error("Failed to copy: ", err);
+      });
+  }
+};
 </script>
 
 <template>
@@ -49,7 +70,32 @@ onMounted(() => {
     ref="section"
     class="mx-auto w-11/12 flex justify-center items-center py-20 md:pt-5 font-poppins text-txt"
   >
-    <div class="w-11/12 pt-20 md:pt- flex flex-col gap-20 items-center">
+    <div class="w-11/12 pt-10 md:pt- flex flex-col gap-20 items-center">
+      <div class="w-full h-full flex flex-col gap-4">
+        <div class="flex justify-between items-center bg-white p-3 rounded-lg">
+          <p>Lorem ipsum dolor sit amet.</p>
+          <div class="flex items-center justify-center gap-4">
+            <p ref="textToCopy" class="text-[#2acfcf] font-bold">
+              Lorem ipsum dolor sit amet.
+            </p>
+            <div>
+              <button
+                v-if="isCopied"
+                class="bg-dark font-bold text-zinc-100 w-20 h-10 rounded-md"
+              >
+                Copied!
+              </button>
+              <button
+                @click="copyToClipboard"
+                v-else
+                class="bg-[#2acfcf] hover:bg-[#33b4b4] font-bold text-zinc-100 w-20 h-10 rounded-md"
+              >
+                Copy
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="w-full md:w-96 grid gap-3 text-center">
         <h2 class="text-3xl md:text-4xl font-bold">Advanced Statistics</h2>
         <p class="text-zinc-400 text-semibold font-medium">

@@ -38,7 +38,7 @@ const toggleMenu = () => {
       <Hero />
     </div>
   </header>
-  <div class="w-full lg:max-h-700 bg-zinc-200 relative">
+  <div class="w-full xl:max-h-700 bg-zinc-200 relative">
     <main class="w-full max-w-7xl lg:h-full mx-auto relative z-10">
       <Shorten />
       <Stats />

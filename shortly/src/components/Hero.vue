@@ -1,5 +1,22 @@
 <script setup>
 import BG from "../assets/icons/Iconillustration-working.vue";
+
+const scrollToShorten = () => {
+  const shortenSection = document.querySelector(".shorten-section");
+  if (shortenSection) {
+    // Calculate the scroll position to be in the middle of the screen
+    const elementRect = shortenSection.getBoundingClientRect();
+    const absoluteElementTop = elementRect.top + window.pageYOffset;
+    const middleOfViewport = window.innerHeight / 2;
+    const scrollPosition =
+      absoluteElementTop - middleOfViewport + elementRect.height / 2;
+
+    window.scrollTo({
+      top: scrollPosition,
+      behavior: "smooth",
+    });
+  }
+};
 </script>
 
 <template>
@@ -22,6 +39,7 @@ import BG from "../assets/icons/Iconillustration-working.vue";
           </p>
         </div>
         <button
+          @click="scrollToShorten"
           class="bg-[#2acfcf] hover:bg-[#33b4b4] mx-auto md:mx-0 transition-all w-40 h-10 rounded-full text-white font-bold"
         >
           Get Started

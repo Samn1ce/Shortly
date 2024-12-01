@@ -25,7 +25,7 @@ function submitLink() {
 
 <template>
   <div
-    class="z-20 absolute bg-dark -translate-y-1/2 top-0 left-1/2 transform -translate-x-1/2 overflow-hidden w-11/12 md:w-4/5 lg:w-11/12 md:h-28 rounded-lg max-w-7xl"
+    class="shorten-section z-20 absolute bg-dark -translate-y-1/2 top-0 left-1/2 transform -translate-x-1/2 overflow-hidden w-11/12 md:w-4/5 lg:w-11/12 md:h-28 rounded-lg max-w-7xl"
   >
     <Shorten class="hidden md:block" />
     <ShortenMobile class="block md:hidden" />

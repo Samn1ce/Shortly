@@ -13,12 +13,16 @@ import X from "../assets/icons/IconTwitter.vue";
       <div class="flex flex-col md:flex-row md:gap-20 gap-10">
         <div class="flex flex-col gap-4">
           <h2 class="font-bold">Features</h2>
-          <div
-            class="flex flex-col gap-1 text-zinc-400 font-semibold text-sm lg:text-base"
-          >
-            <div>Link Shortening</div>
-            <div>Branded Links</div>
-            <div>Analytics</div>
+          <div class="flex flex-col gap-1 font-semibold text-sm lg:text-base">
+            <div class="text-zinc-400 hover:text-zinc-500 cursor-pointer">
+              Link Shortening
+            </div>
+            <div class="text-zinc-400 hover:text-zinc-500 cursor-pointer">
+              Branded Links
+            </div>
+            <div class="text-zinc-400 hover:text-zinc-500 cursor-pointer">
+              Analytics
+            </div>
           </div>
         </div>
         <!--  -->
@@ -27,9 +31,15 @@ import X from "../assets/icons/IconTwitter.vue";
           <div
             class="flex flex-col gap-1 text-zinc-400 font-semibold text-sm lg:text-base"
           >
-            <div>Blog</div>
-            <div>Developers</div>
-            <div>Support</div>
+            <div class="text-zinc-400 hover:text-zinc-500 cursor-pointer">
+              Blog
+            </div>
+            <div class="text-zinc-400 hover:text-zinc-500 cursor-pointer">
+              Developers
+            </div>
+            <div class="text-zinc-400 hover:text-zinc-500 cursor-pointer">
+              Support
+            </div>
           </div>
         </div>
         <!--  -->
@@ -38,10 +48,18 @@ import X from "../assets/icons/IconTwitter.vue";
           <div
             class="flex flex-col gap-1 text-zinc-400 font-semibold text-sm lg:text-base"
           >
-            <div>About</div>
-            <div>Our Team</div>
-            <div>Career</div>
-            <div>Contact</div>
+            <div class="text-zinc-400 hover:text-zinc-500 cursor-pointer">
+              About
+            </div>
+            <div class="text-zinc-400 hover:text-zinc-500 cursor-pointer">
+              Our Team
+            </div>
+            <div class="text-zinc-400 hover:text-zinc-500 cursor-pointer">
+              Career
+            </div>
+            <div class="text-zinc-400 hover:text-zinc-500 cursor-pointer">
+              Contact
+            </div>
           </div>
         </div>
       </div>

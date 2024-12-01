@@ -70,25 +70,30 @@ const copyToClipboard = () => {
     ref="section"
     class="mx-auto w-11/12 flex justify-center items-center py-20 md:pt-5 font-poppins text-txt"
   >
-    <div class="w-11/12 pt-10 md:pt- flex flex-col gap-20 items-center">
+    <div class="w-11/12 md:pt-10 flex flex-col gap-20 items-center">
       <div class="w-full h-full flex flex-col gap-4">
-        <div class="flex justify-between items-center bg-white p-3 rounded-lg">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center bg-white md:p-3 py-3 rounded-lg gap-2 md:gap-0"
+        >
           <p>Lorem ipsum dolor sit amet.</p>
-          <div class="flex items-center justify-center gap-4">
+          <hr class="md:hidden block border-t border-gray-300 w-full" />
+          <div
+            class="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 w-full md:w-auto px-2"
+          >
             <p ref="textToCopy" class="text-[#2acfcf] font-bold">
               Lorem ipsum dolor sit amet.
             </p>
-            <div>
+            <div class="w-full md:w-auto">
               <button
                 v-if="isCopied"
-                class="bg-dark font-bold text-zinc-100 w-20 h-10 rounded-md"
+                class="bg-dark font-bold text-zinc-100 w-full md:w-20 h-10 rounded-md"
               >
                 Copied!
               </button>
               <button
                 @click="copyToClipboard"
                 v-else
-                class="bg-[#2acfcf] hover:bg-[#33b4b4] font-bold text-zinc-100 w-20 h-10 rounded-md"
+                class="bg-[#2acfcf] hover:bg-[#33b4b4] font-bold text-zinc-100 md:w-20 h-10 rounded-md w-full"
               >
                 Copy
               </button>

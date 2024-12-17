@@ -1,5 +1,12 @@
 <script setup>
 import BoostBG from "../assets/icons/IconBoost.vue";
+
+defineProps({
+  onScrollToShorten: {
+    type: Function,
+    required: true,
+  },
+});
 </script>
 
 <template>
@@ -12,6 +19,7 @@ import BoostBG from "../assets/icons/IconBoost.vue";
         Boost Your Links Today
       </h2>
       <button
+        @click="onScrollToShorten"
         class="bg-[#2acfcf] hover:bg-[#33b4b4] transition-all w-44 h-12 rounded-full text-white font-bold text-xl"
       >
         Get Started

@@ -12,6 +12,23 @@ const isMenuOpen = ref(false);
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
 };
+
+const scrollToShorten = () => {
+  const shortenSection = document.querySelector(".shorten-section");
+  if (shortenSection) {
+    // Calculate the scroll position to be in the middle of the screen
+    const elementRect = shortenSection.getBoundingClientRect();
+    const absoluteElementTop = elementRect.top + window.pageYOffset;
+    const middleOfViewport = window.innerHeight / 2;
+    const scrollPosition =
+      absoluteElementTop - middleOfViewport + elementRect.height / 2;
+
+    window.scrollTo({
+      top: scrollPosition,
+      behavior: "smooth",
+    });
+  }
+};
 </script>
 
 <template>
@@ -35,7 +52,7 @@ const toggleMenu = () => {
     </nav>
     <div class="max-w-7xl md:h-full mx-auto relative z-10">
       <NavHeader :isMenuOpen="isMenuOpen" @toggle-menu="toggleMenu" />
-      <Hero />
+      <Hero :onScrollToShorten="scrollToShorten" />
     </div>
   </header>
   <div class="w-full xl:max-h-700 bg-zinc-200 relative">
@@ -44,6 +61,6 @@ const toggleMenu = () => {
       <Stats />
     </main>
   </div>
-  <Boost />
+  <Boost :onScrollToShorten="scrollToShorten" />
   <Footer />
 </template>

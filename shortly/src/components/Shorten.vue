@@ -2,23 +2,43 @@
 import { ref } from "vue";
 import Shorten from "../assets/icons/IconShorten.vue";
 import ShortenMobile from "../assets/icons/IconShortenMobile.vue";
-
 import { shortenLink } from "../api/cleanuri.js";
 
 const url = defineModel();
-
+const isLoading = ref(false);
 const error = ref("");
 
-function submitLink() {
+async function submitLink() {
   if (url.value == "" || url.value == undefined) {
     error.value = "Please, add link";
     return;
   }
+  isLoading.value = true;
+  error.value = "";
+  emit("loadingChange", true);
   try {
-    shortenLink(url.value);
+    console.log("🍕 Taking pizza order:", url.value);
+    const result = await shortenLink(url.value);
+    console.log("🍕 Pizza finished cooking:", result);
+
+    if (result.error) {
+      error.value = result.message || "Failed to shorten URL";
+      emit("shortenError", error.value); // Tell others "Pizza burned!"
+    } else {
+      // 🍕 Pizza is perfect! Find the actual pizza (shortened URL)
+      const shortenedUrl =
+        result.shortUrl ||
+        result.shortened_url ||
+        result.url ||
+        result.result_url;
+    }
   } catch (error) {
-    error.value = error.data.error;
+    error.value = error.data.error || "An unexpected error occured.";
+    emit("shortenError", error.value);
     throw new Error(error.data.error);
+  } finally {
+    isLoading.value = false;
+    emit("loadingChange", false);
   }
 }
 </script>
@@ -42,6 +62,7 @@ function submitLink() {
             v-model="url"
             placeholder="Shorten a link here..."
             class="w-full h-full text-md md:text-2xl outline-none"
+            :disabled="isLoading"
           />
         </div>
         <p class="text-red-500 italic hidden md:block">{{ error }}</p>
@@ -49,9 +70,10 @@ function submitLink() {
       <p class="text-red-500 text-xs italic md:hidden block">{{ error }}</p>
       <button
         @click="submitLink"
-        class="bg-[#2acfcf] hover:bg-[#33b4b4] transition-all w-full h-20 md:w-44 md:h-full rounded-md text-white text-lg font-bold"
+        :disabled="isLoading"
+        class="bg-[#2acfcf] hover:bg-[#33b4b4] transition-all w-full h-20 md:w-44 md:h-full rounded-md text-white text-lg font-bold disabled:bg-gray-400 disabled:cursor-not-allowed"
       >
-        Shorten It!
+        {{ isLoading ? "Shortening..." : "Shorten It!" }}
       </button>
     </div>
   </div>

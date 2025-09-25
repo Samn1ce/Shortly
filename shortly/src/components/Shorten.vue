@@ -31,6 +31,18 @@ async function submitLink() {
         result.shortened_url ||
         result.url ||
         result.result_url;
+
+      if (shortenedUrl) {
+        emit("urlShortened", {
+          original: url.value,
+          shortened: shortenedUrl,
+          fullResponse: result,
+        });
+        error.value = "";
+      } else {
+        error.value = "Invalid response from server";
+        emit("shortenError", error.value);
+      }
     }
   } catch (error) {
     error.value = error.data.error || "An unexpected error occured.";

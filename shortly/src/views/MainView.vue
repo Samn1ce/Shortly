@@ -8,9 +8,30 @@ import Boost from "../components/Boost.vue";
 import Footer from "../components/Footer.vue";
 
 const isMenuOpen = ref(false);
+const shortenedUrl = ref(false);
+const shortUrl = ref("");
+const originalUrl = ref("");
+const error = ref("");
+const isLoading = ref(true);
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
+};
+
+const handleLoadingChange = (loading) => {
+  isLoading.value = loading;
+};
+
+const handleError = (errorMsg) => {
+  error.value = errorMsg;
+  shortenedUrl.value = "";
+};
+
+const handleSuccess = (data) => {
+  shortUrl.value = data.shortened;
+  originalUrl.value = data.original;
+  error.value = "";
+  shortenedUrl = true;
 };
 
 const scrollToShorten = () => {
@@ -57,8 +78,18 @@ const scrollToShorten = () => {
   </header>
   <div class="w-full xl:max-h-700 bg-zinc-200 relative">
     <main class="w-full max-w-7xl lg:h-full mx-auto relative z-10">
-      <Shorten />
-      <Stats />
+      <Shorten
+        @loadingChange="handleLoadingChange"
+        @shortenError="handleError"
+        @urlShortened="handleSuccess"
+      />
+      <Stats
+        :short-url="shortUrl"
+        :shortened-url="shortenedUrl"
+        :original-url="originalUrl"
+        :error="error"
+        :is-loading="isLoading"
+      />
     </main>
   </div>
   <Boost :onScrollToShorten="scrollToShorten" />

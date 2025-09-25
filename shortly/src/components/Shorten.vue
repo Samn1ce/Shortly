@@ -1,9 +1,10 @@
 <script setup>
-import { ref } from "vue";
+import { ref, defineEmits } from "vue";
 import Shorten from "../assets/icons/IconShorten.vue";
 import ShortenMobile from "../assets/icons/IconShortenMobile.vue";
 import { shortenLink } from "../api/cleanuri.js";
 
+const emit = defineEmits(["loadingChange", "shortenError", "urlShortened"]);
 const url = defineModel();
 const isLoading = ref(false);
 const error = ref("");
@@ -44,10 +45,9 @@ async function submitLink() {
         emit("shortenError", error.value);
       }
     }
-  } catch (error) {
-    error.value = error.data.error || "An unexpected error occured.";
+  } catch (err) {
+    error.value = err.data?.error || "An unexpected error occured.";
     emit("shortenError", error.value);
-    throw new Error(error.data.error);
   } finally {
     isLoading.value = false;
     emit("loadingChange", false);
@@ -83,6 +83,7 @@ async function submitLink() {
       <button
         @click="submitLink"
         :disabled="isLoading"
+        @keyup.enter="submitLink"
         class="bg-[#2acfcf] hover:bg-[#33b4b4] transition-all w-full h-20 md:w-44 md:h-full rounded-md text-white text-lg font-bold disabled:bg-gray-400 disabled:cursor-not-allowed"
       >
         {{ isLoading ? "Shortening..." : "Shorten It!" }}

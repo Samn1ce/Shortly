@@ -31,7 +31,7 @@ const handleSuccess = (data) => {
   shortUrl.value = data.shortened;
   originalUrl.value = data.original;
   error.value = "";
-  shortenedUrl = true;
+  shortenedUrl.value = true;
 };
 
 const scrollToShorten = () => {

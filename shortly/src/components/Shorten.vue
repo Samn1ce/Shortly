@@ -24,9 +24,8 @@ async function submitLink() {
 
     if (result.error) {
       error.value = result.message || "Failed to shorten URL";
-      emit("shortenError", error.value); // Tell others "Pizza burned!"
+      emit("shortenError", error.value);
     } else {
-      // 🍕 Pizza is perfect! Find the actual pizza (shortened URL)
       const shortenedUrl =
         result.shortUrl ||
         result.shortened_url ||

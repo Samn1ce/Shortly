@@ -104,7 +104,7 @@ const copyToClipboard = () => {
         <div
           class="w-full flex flex-col md:flex-row justify-between items-center bg-white md:p-3 py-3 rounded-lg gap-2 md:gap-0"
         >
-          <p class="border-black border w-11/12 text-wrap">
+          <p class="w-11/12 text-wrap">
             {{ props.originalUrl }}
           </p>
           <hr class="md:hidden block border-t border-gray-300 w-full" />

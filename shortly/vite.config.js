@@ -1,5 +1,4 @@
 import { fileURLToPath, URL } from "node:url";
-
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 
@@ -13,9 +12,11 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      "^/api": {
+      "/api/shorten": {
         target: "https://cleanuri.com",
         changeOrigin: true,
+        // Rewrite /api/shorten → /api/v1/shorten
+        rewrite: (path) => path.replace(/^\/api\/shorten/, "/api/v1/shorten"),
       },
     },
   },

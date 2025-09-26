@@ -18,9 +18,9 @@ async function submitLink() {
   error.value = "";
   emit("loadingChange", true);
   try {
-    console.log("🍕 Taking pizza order:", url.value);
+    // console.log("🍕 Taking pizza order:", url.value);
     const result = await shortenLink(url.value);
-    console.log("🍕 Pizza finished cooking:", result);
+    // console.log("🍕 Pizza finished cooking:", result);
 
     if (result.error) {
       error.value = result.message || "Failed to shorten URL";
